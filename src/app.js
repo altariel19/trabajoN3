@@ -1,38 +1,38 @@
 const express = require('express');
-const ProductManager = require('./ProductManager'); // Asegúrate de tener la ruta correcta al archivo ProductManager
+
+const ProductManager = require('./ProductManager'); 
 
 const app = express();
+
 const port = 8080;
 
-// Endpoint para obtener todos los productos o limitar según el query param
+const productManager = new ProductManager('./productos.json');
+
 app.get('/products', (req, res) => {
-  const limit = req.query.limit; // Obtener el valor del query param 'limit'
-  
-  try {
-    const products = ProductManager.getProducts(limit);
-    res.json(products);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener los productos' });
+  const limit = req.query.limit;
+
+  let products = productManager.getAllProducts();
+
+  if (limit) {
+    products = products.slice(0, parseInt(limit, 10));
   }
+
+  res.json({ products });
 });
 
-// Endpoint para obtener un producto específico por su id
 app.get('/products/:pid', (req, res) => {
   const productId = req.params.pid;
+  const product = productManager.getProductById(productId);
 
-  try {
-    const product = ProductManager.getProductById(productId);
-    
-    if (!product) {
-      res.status(404).json({ error: 'Producto no encontrado' });
-    } else {
-      res.json(product);
-    }
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener el producto' });
+  if (product) {
+    res.json({ product });
+  } else {
+    res.status(404).json({ error: 'Product not found' });
   }
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log('Server is running on port ${port}');
 });
+
+

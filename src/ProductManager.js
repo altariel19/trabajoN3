@@ -83,7 +83,14 @@ const productManager = new ProductManager('productos.json');
 productManager.addProduct({ title: "Remera", description: "Color Blanco", price: 14000, thumbnail: "/images/remera1.jpg", code: "1", stock: "10" });
 productManager.addProduct({ title: "Pantalon", description: "Color Gris", price: 24000, thumbnail: "/images/pantalon1.jpg", code: "2", stock: "20" });
 productManager.addProduct({ title: "Campera", description: "Color Negra", price: 4000, thumbnail: "/images/campera1.jpg", code: "3", stock: "30" });
-productManager.addProduct({ title: "Remera", description: "Color Blanco", price: 14000, thumbnail: "/images/remera1.jpg", code: "1", stock: "10" });
+productManager.addProduct({ title: "Buzo", description: "Color Rosa", price: 19000, thumbnail: "/images/buzo1.jpg", code: "4", stock: "9" });
+productManager.addProduct({ title: "Muscolosa", description: "Color Blanco", price: 10000, thumbnail: "/images/Musculosa1.jpg", code: "5", stock: "10" });
+productManager.addProduct({ title: "Pantalon", description: "Color Negro", price: 25000, thumbnail: "/images/pantalon2.jpg", code: "6", stock: "20" });
+productManager.addProduct({ title: "Chaleco", description: "Color Marron", price: 16000, thumbnail: "/images/chaleco1.jpg", code: "7", stock: "10" });
+productManager.addProduct({ title: "Falda", description: "Color Blanco", price: 11000, thumbnail: "/images/falda1.jpg", code: "8", stock: "13" });
+productManager.addProduct({ title: "Short", description: "Color Azul", price: 14000, thumbnail: "/images/short1.jpg", code: "9", stock: "33" });
+productManager.addProduct({ title: "Vestido", description: "Color verde", price: 35000, thumbnail: "/images/vestido1.jpg", code: "10", stock: "11" });
+
 
 console.log(productManager.getProducts());
 
@@ -95,3 +102,6 @@ console.log(productManager.getProducts());
 
 productManager.deleteProduct(1);
 console.log(productManager.getProducts());
+
+
+module.exports = ProductManager;
